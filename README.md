@@ -88,8 +88,11 @@ Now you can add any docker services to the yml like so:
 
 Start, test it
 
-> docker-compose up api.docker
-> dig mysql57.docker
+```
+docker-compose up api.docker
+dig mysql57.docker
+```
 
 Your localhost as well as other containers in the 'local' subnet will be able to access these
-containers easily by their container_name eg. mysql57.docker
+containers easily by their container_name eg. mysql57.docker.
+This is completely maintanance free ie run & forget it exists.
