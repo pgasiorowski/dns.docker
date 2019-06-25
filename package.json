@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "dnsd": "0.9.6"
+  }
+}
