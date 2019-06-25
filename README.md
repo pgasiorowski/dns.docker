@@ -28,16 +28,16 @@ Tested on: Ubuntu 16 and Ubuntu 18
 
 ## Docker setup
 
-1. Create custom subnet
+* Create custom subnet
 
-> docker network create --subnet 172.0.0.0/24 local
+  > docker network create --subnet 172.0.0.0/24 local
 
-This step is required as the dns.docker container needs a static IP
+  This step is required as the dns.docker container needs a static IP
 
-2. create docker-compose.yml
+* create docker-compose.yml
 
-I tend to keep a global file in ~/development/docker-compose.yml
-and projects in ~/development/* eg. keep this repo is in ~/development/dns.docker  
+  I tend to keep a global file in ~/development/docker-compose.yml and projects in ~/development/*
+  eg. keep this repo is in ~/development/dns.docker  
 
 ```
 version: '2'
@@ -59,7 +59,7 @@ networks:
       name: local
 ```
 
-2. Run it
+* Run it
 
 ```
 cd ~
@@ -67,7 +67,7 @@ docker-compose up -d dns.docker
 docker-compose logs -f dns.docker
 ```
 
-Once launched, the docker daemon will keep it running between restarts thanks to 'restart: always'
+  Once launched, the docker daemon will keep it running between restarts thanks to 'restart: always'
 
 ## What next
 
@@ -88,8 +88,8 @@ Now you can add any docker services to the yml like so:
 
 Start, test it
 
-* docker-compose up api.docker
-* dig mysql57.docker
+> docker-compose up api.docker
+> dig mysql57.docker
 
 Your localhost as well as other containers in the 'local' subnet will be able to access these
 containers easily by their container_name eg. mysql57.docker
