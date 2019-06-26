@@ -58,7 +58,7 @@ Once launched, the docker daemon will keep it running between restarts thanks to
 
 ## Ubuntu setup 
 
-In this step we're going to tell ubuntu to query the container running 172.0.0.53
+In this step we're going to tell ubuntu to query the container running at 172.0.0.53
 for anything in *.docker domain
 
 * sudo apt-get install dnsmasq
@@ -70,9 +70,15 @@ for anything in *.docker domain
   This will tell dns resolver that '.docker' is a local private domain,
   and 172.0.0.53 is the dns server to query for its records.
 
-* Tell NetworkManager to use dnsmasq
+* Tell NetworkManager to use dnsmasq as resolver
   edit /etc/NetworkManager/NetworkManager.conf in section [main] add
   > dns=dnsmasq
+
+* Disable default systemd-resolved resolver
+
+  > sudo systemctl disable systemd-resolved.service
+  > sudo systemctl stop systemd-resolved
+  > sudo rm /etc/resolv.conf
 
 * Restart network manager or reboot
 
@@ -103,3 +109,6 @@ dig mysql57.docker
 Your localhost as well as other containers in the 'local' subnet will be able to access these
 containers easily by their container_name eg. mysql57.docker.
 This is completely maintenance free ie run & forget it exists.
+
+## TODO
+* Find a way to use local private domain with systemd-resolved so that we don't need to install dnsmasq
