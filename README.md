@@ -95,6 +95,7 @@ Now you can add any docker services to the yml file like so:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ROOT_HOST: "%"
+    command: mysqld --sql_mode="NO_ENGINE_SUBSTITUTION"
     networks:
       local:
 ```
